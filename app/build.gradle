@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    maven { url "https://dl.bintray.com/healbe/healbesdk" }
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.healbe.healbe_example_android"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 4
+        versionName "1.3"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+ext {
+    target = 28
+    buildTools = "28.0.0"
+    
+    androidx = "1.0.0"
+    rxPerm = '0.9.4@aar'
+    healbe = '1.0.4'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "androidx.core:core:1.0.1"
+    implementation "androidx.legacy:legacy-support-core-utils:$androidx"
+    implementation "androidx.legacy:legacy-support-core-ui:$androidx"
+    implementation "androidx.fragment:fragment:$androidx"
+    implementation "androidx.cardview:cardview:$androidx"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation "com.google.android.material:material:$androidx"
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:$rxPerm"
+
+    annotationProcessor "androidx.annotation:annotation:$androidx"
+
+    // sdk
+    implementation("com.healbe:healbesdk:$healbe") { transitive = true }
+}

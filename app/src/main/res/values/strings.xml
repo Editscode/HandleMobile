@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">healbe-example-andorid</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sdk_example">SDK Example %1s</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="login_error">Enter valid email</string>
+    <string name="login_wrong_user">Please login another user</string>
+    <string name="auth_error">Unexpected authorization error, see log with search key \"%1s\"</string>
+    <string name="too_much">Too much wrong tries, wait about 5 minutes</string>
+    <string name="wrong_login">Wrong user email or password</string>
+    <string name="warn_loc_permission">Healbe Gobe and Healbe SDK example android application doesn\'t track your location. Application needs this permission to find your wristband</string>
+    <string name="warn_blu_permission">We can\'t continue without bluetooth permissions</string>
+    <string name="ok">OK</string>
+    <string name="logout">Logout</string>
+    <string name="searching_devices_nearby">Searching devices nearby</string>
+    <string name="searching_devices_not_found">Device not found!</string>
+    <string name="make_sure">Make sure that GoBe is near\nyour phone and turned on</string>
+    <string name="retry">retry</string>
+    <string name="login">Please sign in</string>
+    <string name="connecting_to">Connecting to %1s…</string>
+    <string name="connecting">Connecting…</string>
+    <string name="waiting">Waiting for %1s…</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_pin">Please enter pin</string>
+    <string name="pin_helper">Enter 6-digits PIN code to access you GoBe</string>
+    <string name="pin_helper_setup">Enter 6-digits PIN code to protect you GoBe</string>
+    <string name="error_firmware">Firmware error</string>
+    <string name="sorry">Sorry!\n\nThis SDK example don\'t know how\nto update device firmware!\n\nIn future versions we show him how.</string>
+    <string name="try_another_wristband">try another wristband</string>
+    <string name="dashboard_menu">Dashboard</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="find_another_gobe">Find another GoBe</string>
+
+    <string name="energy_header">Energy balance</string>
+    <string name="hydration_header_cur">Hydration level</string>
+    <string name="hydration_header">Hydration</string>
+    <string name="hydration_header_average">Average hydration</string>
+    <string name="pulse_header">Pulse</string>
+    <string name="pulse_header_cur">Current pulse</string>
+    <string name="pulse_header_var">Pulse variation</string>
+    <string name="night_header">Night sleep</string>
+    <string name="night_header_today">Tonight sleep</string>
+    <string name="night_header_last">Last night sleep</string>
+    <string name="stress_header">Stress</string>
+    <string name="stress_header_cur">Stress level</string>
+    <string name="stress_header_av">Average stress</string>
+    <string name="may_take_up_to_hour">may take up to an hour</string>
+    <string name="recommended" formatted="false">%s recommended for tonight</string>
+    <string name="sleep_quality">Sleep quality</string>
+
+    <plurals name="plurals_steps">
+        <item quantity="zero">steps</item>
+        <item quantity="one">step</item>
+        <item quantity="other">steps</item>
+    </plurals>
+
+    <string name="active">active</string>
+    <string name="time_period_hours">h</string>
+    <string name="time_period_mins">min</string>
+    <string name="time_period_long" formatted="false">%d %s %d %s</string>
+    <string name="time_period_short" formatted="false">%d %s</string>
+    <string name="na">n/a</string>
+    <string name="kcal">kcal</string>
+    <string name="bpm">bpm</string>
+
+    <string name="level_no_stress">No stress</string>
+    <string name="level_light">Light</string>
+    <string name="level_moderate">Moderate</string>
+    <string name="level_high">High</string>
+    <string name="level_very_high">Very high</string>
+
+    <string name="calculating">Calculating</string>
+    <string name="low">Low</string>
+    <string name="normal">Normal</string>
+
+    <string name="no_data">No Data</string>
+
+    <string name="awake">Awake</string>
+    <string name="asleep">Asleep</string>
+
+    <string name="synchronization_p" formatted="false">Synchronization (%d%%)…</string>
+
+    <string name="enable_bluetooth">Enable Bluetooth to connect your Healbe GoBe</string>
+    <string name="bluetooth_error">Internal device Bluetooth LE error</string>
+    <string name="gobe_connection_error_short">Can\'t find your GoBe</string>
+    <string name="no_contact">No contact or poor contact with skin</string>
+    <string name="dashboard">Dashboard</string>
+</resources>
