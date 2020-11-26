@@ -8,8 +8,8 @@ import com.healbe.healbe_example_andorid.connect.fragments.EnterPinFragment;
 import com.healbe.healbe_example_andorid.connect.fragments.ErrorFragment;
 import com.healbe.healbe_example_andorid.connect.fragments.SearchFragment;
 import com.healbe.healbe_example_andorid.connect.fragments.SetupPinFragment;
-import com.healbe.healbe_example_andorid.dashboard.DashboardActivity;
 import com.healbe.healbe_example_andorid.enter.EnterActivity;
+import com.healbe.healbe_example_andorid.pojo.acti.HelloActivity;
 import com.healbe.healbe_example_andorid.tools.BaseActivity;
 import com.healbe.healbe_example_andorid.tools.SystemBarManager;
 import com.healbe.healbesdk.business_api.HealbeSdk;
@@ -105,7 +105,7 @@ public class ConnectActivity extends BaseActivity implements ConnectRouter {
     private void goDashboard() {
         Bundle bundle = ActivityOptionsCompat.makeCustomAnimation(this,
                 android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
-        startActivity(new Intent(this, DashboardActivity.class), bundle);
+        startActivity(new Intent(this, HelloActivity.class), bundle);
         finish();
     }
 

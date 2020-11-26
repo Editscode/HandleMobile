@@ -39,7 +39,7 @@ public class SummaryViewHolder {
         waterBar = v.findViewById(R.id.water_bar);
         heartBar = v.findViewById(R.id.heart_bar);
         stressBar = v.findViewById(R.id.stress_bar);
-        sleepBar = v.findViewById(R.id.sleep_bar);
+        //sleepBar = v.findViewById(R.id.sleep_bar);
 
     }
 

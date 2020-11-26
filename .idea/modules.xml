@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/healbe-public-android-sdk-demo.iml" filepath="$PROJECT_DIR$/healbe-public-android-sdk-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HandleMobile.iml" filepath="$PROJECT_DIR$/.idea/modules/HandleMobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HandleMobile.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HandleMobile.app.iml" />
     </modules>
   </component>
 </project>

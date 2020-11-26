@@ -70,7 +70,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/passwordReg"
             android:letterSpacing="0.5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

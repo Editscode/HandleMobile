@@ -21,7 +21,9 @@
         android:name=".App"
         android:theme="@style/EnterTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".pojo.acti.HelloActivity" />
+        <activity android:name=".pojo.acti.LoginActivity" />
+        <activity android:name=".pojo.acti.RegActivity" />
         <activity android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>

@@ -91,17 +91,33 @@
             android:background="@color/light_black_12"/>
 
 
-        <com.healbe.healbe_example_andorid.views.DashboardView
-            android:id="@+id/sleep_bar"
+        <Button
+            android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:round_color="@color/main_sleep_blue"
-            app:icon="@drawable/ic_sleep_dash"
-            app:title_string="@string/night_header"
-            app:value_visible="false"
-            app:text_visible="false"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp" />
+            android:onClick="onBasicParam"
+            android:text="Json" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="submitClick"
+            android:text="SUBMIT" />
+
+        <Button
+            android:id="@+id/testButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickTestButton"
+            android:text="TestButton" />
+
+        <TextView
+            android:id="@+id/textResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="14sp" />
 
     </LinearLayout>
 </ScrollView>

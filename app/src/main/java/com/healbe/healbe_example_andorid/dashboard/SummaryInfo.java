@@ -67,12 +67,6 @@ class SummaryInfo {
         this.heartRate = new HeartRate();
         this.hydrationState = HydrationState.NO_DATA;
         this.stressState = StressState.NO_DATA;
-        this.healthData = new Flowable<List<HeartData>>() {
-            @Override
-            protected void subscribeActual(Subscriber<? super List<HeartData>> s) {
-
-            }
-        };
     }
 
     public SummaryInfo(HeartData data,ClientState clientState, boolean onHand, DaySummary daySummary, HeartRate heartRate, HydrationState hydrationState, StressState stressState, float stressLevel,Flowable<List<HeartData>> healthData) {
@@ -130,7 +124,7 @@ class SummaryInfo {
         this.heartRate = heartRate;
     }
 public  class HeartDataObject{
-        public String mac;
+        public String mac = "bjhbjb";
         public List<HeartData> heartData;
         public HeartDataObject(String mac,List<HeartData> data){
             this.mac = mac;
@@ -139,22 +133,6 @@ public  class HeartDataObject{
 
 }
     public void setHeartData(Flowable<List<HeartData>> healthDat){
-        healthDat.subscribe(new Consumer<List<HeartData>>() {
-            @Override
-            public void accept(List<HeartData> heartData) throws Exception {
-                File file = new File(Environment.getExternalStorageDirectory() + "/" + File.separator + "HeartData.json");
-                file.createNewFile();
-                if(file.exists()) {
-                    OutputStream fo = new FileOutputStream(file);
-                    //StreamResult result = new StreamResult(new File(android.os.Environment.getExternalStorageDirectory(), "upload_data.xml"));
-
-                    String json = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().
-                            create().toJson(heartData);
-                        fo.write(json.getBytes());
-
-                }
-            }
-        });
         this.healthData = healthDat;
     }
 

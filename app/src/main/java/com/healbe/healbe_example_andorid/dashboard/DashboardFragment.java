@@ -6,7 +6,10 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import com.healbe.healbe_example_andorid.R;
+import com.healbe.healbe_example_andorid.pojo.ConverterJson;
 import com.healbe.healbe_example_andorid.tools.BluetoothBroadcastReceiver;
 import com.healbe.healbe_example_andorid.tools.SystemBarManager;
 import com.healbe.healbesdk.business_api.HealbeSdk;
@@ -46,6 +49,7 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -72,6 +76,14 @@ public class DashboardFragment extends Fragment {
 
         observeToday();
         observeWbState();
+
+
+        TextView textView = (TextView) view.findViewById(R.id.textResponse);
+        if(ConverterJson.checkToSubmit())
+            textView.setText("Данные были cобраны " + ConverterJson.getLastTimeCreateJson() + " и отправлены.");
+        else
+            textView.setText("Новые данные cобраны " + ConverterJson.getLastTimeCreateJson());
+
     }
 
     //observe data and combine it to summary

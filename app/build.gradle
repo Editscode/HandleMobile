@@ -30,7 +30,7 @@ android {
 ext {
     target = 28
     buildTools = "28.0.0"
-    
+
     androidx = "1.0.0"
     rxPerm = '0.9.4@aar'
     healbe = '1.0.4'
@@ -48,7 +48,10 @@ dependencies {
     implementation "androidx.multidex:multidex:2.0.1"
     implementation "com.google.android.material:material:$androidx"
     implementation "com.tbruyelle.rxpermissions2:rxpermissions:$rxPerm"
-
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.3'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     annotationProcessor "androidx.annotation:annotation:$androidx"
 
     // sdk

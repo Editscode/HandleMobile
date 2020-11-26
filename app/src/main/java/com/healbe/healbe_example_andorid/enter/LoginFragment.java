@@ -69,7 +69,7 @@ public class LoginFragment extends Fragment {
         mailLayout = view.findViewById(R.id.mail_layout);
         mailText = view.findViewById(R.id.email);
         passLayout = view.findViewById(R.id.pass_layout);
-        passText = view.findViewById(R.id.password);
+        passText = view.findViewById(R.id.passwordReg);
         button = view.findViewById(R.id.button);
         progress = view.findViewById(R.id.progress);
 

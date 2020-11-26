@@ -90,4 +90,15 @@
     <string name="gobe_connection_error_short">Can\'t find your GoBe</string>
     <string name="no_contact">No contact or poor contact with skin</string>
     <string name="dashboard">Dashboard</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Войти</string>
+    <string name="action_sign_in">Авторизация</string>
+    <string name="action_new_reg">Регистрация</string>
+    <string name="text_license">Лицензионное соглашение</string>
+    <string name="hello_reg">Регистрация</string>
+    <string name="hello_autho">Авторизация</string>
+    <string name="text_refresh_pass">Восстановить пароль?</string>
+    <string name="text_login_acti">Авторизация</string>
+    <string name="text_reg_acti">Регистрация</string>
 </resources>

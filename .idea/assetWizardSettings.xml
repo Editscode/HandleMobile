@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -13,9 +18,9 @@
                       <PersistentState>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_success" />
-                            <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="D:\healbe_logo_vertical.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_hello_claim" />
+                            <entry key="sourceFile" value="D:\files\jdi\healthBe\svg\Contents_login\Claim.svg" />
                           </map>
                         </option>
                       </PersistentState>
