@@ -5,6 +5,7 @@
     android:id="@+id/hello"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="10dp"
     tools:context=".pojo.acti.HelloActivity">
 
     <LinearLayout
@@ -17,15 +18,17 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="60dp"
             app:srcCompat="@drawable/ic_hello_claim" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="390dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             app:srcCompat="@drawable/ic_hello_illustration" />
 
         <Button
@@ -37,11 +40,12 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="60dp"
             android:background="@drawable/gradient_autho_button"
+            android:fontFamily="@font/sfuitextbold"
             android:onClick="onAutho"
             android:text="@string/hello_autho"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="14dp"
+            android:textColor="#FBFBFB"
+            android:textSize="50px"
             android:textStyle="normal"></Button>
 
         <Button
@@ -49,24 +53,29 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="60dp"
             android:layout_marginRight="60dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/gradient_reg_button"
+            android:elevation="50dp"
+            android:fontFamily="@font/sfuitextsemibold"
             android:onClick="onReg"
             android:text="@string/hello_reg"
             android:textAllCaps="false"
             android:textColor="#323643"
-            android:textSize="14dp" />
+            android:textSize="50px" />
 
         <TextView
             android:id="@+id/textLicence"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sfuitextmedium"
             android:onClick="onLicense"
             android:text="@string/text_license"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#9DA3B4"
+            android:textSize="37px" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

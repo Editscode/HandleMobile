@@ -49,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
             ObjectMapper mapper = new ObjectMapper();
             try {
                 authRes = mapper.readValue(hbPost.getResponseBody(), AuthenticateResponse.class);
-                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-                intent.putExtra(HealBePost.EXTRA_TOKEN, authRes.getJwtToken());
+                Intent intent = new Intent(LoginActivity.this, GeneralActivity.class);
+                intent.putExtra(HealBePost.EXTRA_USER, hbPost.getResponseBody());
                 startActivity(intent);
                 finish();
             } catch (JsonProcessingException e) {

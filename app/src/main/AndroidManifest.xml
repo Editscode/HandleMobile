@@ -24,6 +24,7 @@
         <activity android:name=".pojo.acti.HelloActivity" />
         <activity android:name=".pojo.acti.LoginActivity" />
         <activity android:name=".pojo.acti.RegActivity" />
+        <activity android:name=".pojo.acti.GeneralActivity" />
         <activity android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>

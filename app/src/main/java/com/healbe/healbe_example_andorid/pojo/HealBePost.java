@@ -25,6 +25,9 @@ public class HealBePost {
 
     public static final String EXTRA_TOKEN ="com.healbe.healbe_example_android.USERID";
     public static final String EXTRA_TIME="com.healbe.healbe_example_android.TIME";
+    public static final String EXTRA_USER="com.healbe.healbe_example_android.USER";
+
+
     public static final String URL_AUTHO = "https://healchpack.azurewebsites.net/users/login";
     public static final String URL_REG = "https://healchpack.azurewebsites.net/users/CreateUser";
     public static final String URL_PACK = "https://healchpack.azurewebsites.net/api";
