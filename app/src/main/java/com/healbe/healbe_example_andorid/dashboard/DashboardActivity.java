@@ -237,7 +237,7 @@ public class DashboardActivity extends BaseActivity {
         }
 
         HealBePost healBePost = new HealBePost(HealBePost.URL_PACK, jsonString);
-        healBePost.setToken(TOKEN);
+        healBePost.setToken("Bearer " + TOKEN);
         String str = healBePost.post();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);

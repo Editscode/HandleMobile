@@ -42,11 +42,11 @@ public class AuthenticateResponse {
     @Override
     public String toString() {
         return "AuthenticateResponse{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", token='" + jwtToken + '\'' +
+                "\n id= " + id +
+                ",\n firstName= '" + firstName + '\'' +
+                ",\n lastName= '" + lastName + '\'' +
+                ",\n email= '" + email + '\'' +
+                ",\n token= '" + jwtToken + '\'' +
                 '}';
     }
 }
