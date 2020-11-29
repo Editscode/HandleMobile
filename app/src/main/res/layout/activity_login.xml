@@ -85,7 +85,7 @@
         android:enabled="true"
         android:fontFamily="@font/sfuitextmedium"
         android:onClick="onClickLogin"
-        android:text="@string/action_sign_in"
+        android:text="Войти"
         android:textAllCaps="false"
         android:textColor="#FBFBFB"
         android:textSize="50px"

@@ -54,6 +54,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     annotationProcessor "androidx.annotation:annotation:$androidx"
 
+    // for Tab
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
+
     // sdk
     implementation("com.healbe:healbesdk:$healbe") { transitive = true }
 }

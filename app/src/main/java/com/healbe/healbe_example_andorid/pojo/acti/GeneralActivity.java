@@ -8,20 +8,28 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.android.material.tabs.TabLayout;
 import com.healbe.healbe_example_andorid.R;
-import com.healbe.healbe_example_andorid.dashboard.DashboardActivity;
 import com.healbe.healbe_example_andorid.pojo.ConverterJson;
 import com.healbe.healbe_example_andorid.pojo.HealBePost;
 import com.healbe.healbe_example_andorid.pojo.fortest.HealBePostResponse;
+import com.healbe.healbe_example_andorid.pojo.frag.CalendarFragment;
+import com.healbe.healbe_example_andorid.pojo.frag.StatusFragment;
+import com.healbe.healbe_example_andorid.pojo.frag.SyncFragment;
 import com.healbe.healbe_example_andorid.pojo.tools.AuthenticateResponse;
 import com.healbe.healbe_example_andorid.pojo.tools.ExtendStateData;
 import com.healbe.healbe_example_andorid.pojo.tools.HealthPack;
@@ -29,45 +37,58 @@ import com.healbe.healbesdk.business_api.HealbeSdk;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 
 public class GeneralActivity extends AppCompatActivity {
+
     private AuthenticateResponse user;
     private TextView userName;
-    private TabHost tabHost;
-    private TabHost.TabSpec tab1;
-    private TabHost.TabSpec tab2;
-    private TabHost.TabSpec tab3;
 
-    CompositeDisposable destroy = new CompositeDisposable();
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+
+    private StatusFragment statusFragment;
+    private CalendarFragment calendarFragment;
+    private SyncFragment syncFragment;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general);
-
         /*Забираем пользователя*/
         Intent intent = getIntent();
         try {
             user = new ObjectMapper().readValue(intent.getStringExtra(HealBePost.EXTRA_USER), AuthenticateResponse.class);
-        } catch (JsonProcessingException e) {
-            Toast.makeText(GeneralActivity.this, "Такого не должно быть -> \n" + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-
+        } catch (JsonProcessingException e) { Toast.makeText(GeneralActivity.this, "Такого не должно быть -> \n" + e.getMessage(), Toast.LENGTH_LONG).show(); }
         userName = (TextView) findViewById(R.id.textUserName);
         userName.setText(user.getFirstName() + " " + user.getLastName());
 
-        TextView textView = (TextView) findViewById(R.id.textViewINFO);
-        if(ConverterJson.checkToSubmit())
-            textView.setText("Данные были cобраны " + ConverterJson.getLastTimeCreateJson() + " и отправлены.");
-        else
-            textView.setText("Новые данные cобраны " + ConverterJson.getLastTimeCreateJson());
 
-        //TabHost
-        createTab();
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
+
+        statusFragment = new StatusFragment();
+        calendarFragment = new CalendarFragment();
+        syncFragment = new SyncFragment();
+
+
+
+
+        tabLayout.setupWithViewPager(viewPager);
+
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
+        viewPagerAdapter.addFragment(statusFragment, "Состояние");
+        viewPagerAdapter.addFragment(calendarFragment, "Календарь");
+        viewPagerAdapter.addFragment(syncFragment, "Синхронизация");
+        viewPager.setAdapter(viewPagerAdapter);
+
+
+
 
 
         Toast.makeText(GeneralActivity.this, user.toString(), Toast.LENGTH_LONG).show();
@@ -185,43 +206,43 @@ public class GeneralActivity extends AppCompatActivity {
         }
     }
 
-    private void createTab() {
-        tabHost = (TabHost) findViewById(android.R.id.tabhost);
-        tabHost.setup();
 
 
-        // создаем вкладку и указываем тег
-        tab1 = tabHost.newTabSpec("tag1");
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
 
-        View v = getLayoutInflater().inflate(R.layout.tab_header_one, null);
-        // название вкладки
-        tab1.setIndicator(v);
-        // указываем id компонента из FrameLayout, он и станет содержимым
-        tab1.setContent(R.id.tab1);
-        // добавляем в корневой элемент
-        tabHost.addTab(tab1);
+        private List<Fragment> fragments = new ArrayList<>();
+        private List<String> fragmentTitle = new ArrayList<>();
 
-        tab2 = tabHost.newTabSpec("tag2");
+        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+            super(fm, behavior);
+        }
 
-        v = getLayoutInflater().inflate(R.layout.tab_header_two, null);
-        tab2.setIndicator(v);
-        tab2.setContent(R.id.tab2);
-        tabHost.addTab(tab2);
 
-        tab3 = tabHost.newTabSpec("tag3");
-        v = getLayoutInflater().inflate(R.layout.tab_header_three, null);
-        tab3.setIndicator(v);
-        tab3.setContent(R.id.tab3);
-        tabHost.addTab(tab3);
+        public void addFragment(Fragment fragment, String title) {
+            fragments.add(fragment);
+            fragmentTitle.add(title);
+        }
 
-        tabHost.setCurrentTabByTag("tag1");
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
 
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String s) {
-                Toast.makeText(getBaseContext(), "tabId = " + s, Toast.LENGTH_SHORT).show();
-            }
-        });
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return fragmentTitle.get(position);
+        }
+    }
+
+    public AuthenticateResponse getUser() {
+        return user;
     }
 
 }

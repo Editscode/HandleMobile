@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sync_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pojo.frag.SyncFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/json_button"
+            style="@style/TextForAuthoButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/gradient_autho_button"
+            android:fontFamily="@font/sfuitextmedium"
+            android:onClick="onClickJSON"
+            android:text="Сбор данных"
+            android:textAllCaps="false"
+            android:textColor="#FBFBFB"
+            android:textSize="50px"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/gradient_autho_button"
+            android:fontFamily="@font/sfuitextmedium"
+            android:onClick="onClickSUBMIT"
+            android:text="Отправка на сервер"
+            android:textAllCaps="false"
+            android:textColor="#FBFBFB"
+            android:textSize="50px"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/json_button" />
+
+        <TextView
+            android:id="@+id/textViewINFO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sfuitextmedium"
+            android:text="@string/hello_blank_fragment"
+            android:textAlignment="center"
+            android:textColor="#9DA3B4"
+            android:textSize="37px"
+            app:layout_constraintTop_toBottomOf="@+id/submit_button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
