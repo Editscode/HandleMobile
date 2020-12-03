@@ -13,7 +13,7 @@
 
     <style name="TextForTabs">
         <item name="android:fontFamily">@font/sfuitextmedium</item>
-        <item name="android:textSize">27px</item>
+        <item name="android:textSize">32px</item>
         <item name="android:textColor">#323643</item>
         <item name="textAllCaps">false</item>
     </style>

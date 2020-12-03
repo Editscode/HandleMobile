@@ -1,4 +1,4 @@
-package com.healbe.healbe_example_andorid.pojo;
+package com.healbe.healbe_example_andorid.pojo.fortest;
 
 import android.app.Activity;
 import android.app.AlertDialog;

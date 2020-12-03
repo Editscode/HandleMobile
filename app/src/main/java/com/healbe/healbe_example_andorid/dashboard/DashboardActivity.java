@@ -19,7 +19,7 @@ import com.healbe.healbe_example_andorid.R;
 import com.healbe.healbe_example_andorid.connect.ConnectActivity;
 import com.healbe.healbe_example_andorid.enter.EnterActivity;
 import com.healbe.healbe_example_andorid.pojo.ConverterJson;
-import com.healbe.healbe_example_andorid.pojo.HealBePost;
+import com.healbe.healbe_example_andorid.pojo.fortest.HealBePost;
 import com.healbe.healbe_example_andorid.pojo.tools.HealthPack;
 import com.healbe.healbe_example_andorid.pojo.tools.ExtendStateData;
 import com.healbe.healbe_example_andorid.tools.BaseActivity;
@@ -32,8 +32,6 @@ import androidx.core.app.ActivityOptionsCompat;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;

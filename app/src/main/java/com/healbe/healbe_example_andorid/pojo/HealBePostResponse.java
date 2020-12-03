@@ -1,4 +1,4 @@
-package com.healbe.healbe_example_andorid.pojo.fortest;
+package com.healbe.healbe_example_andorid.pojo;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

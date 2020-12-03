@@ -25,11 +25,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.tabs.TabLayout;
 import com.healbe.healbe_example_andorid.R;
 import com.healbe.healbe_example_andorid.pojo.ConverterJson;
-import com.healbe.healbe_example_andorid.pojo.HealBePost;
-import com.healbe.healbe_example_andorid.pojo.fortest.HealBePostResponse;
+import com.healbe.healbe_example_andorid.pojo.fortest.HealBePost;
+import com.healbe.healbe_example_andorid.pojo.HealBePostResponse;
 import com.healbe.healbe_example_andorid.pojo.frag.CalendarFragment;
 import com.healbe.healbe_example_andorid.pojo.frag.StatusFragment;
 import com.healbe.healbe_example_andorid.pojo.frag.SyncFragment;
+import com.healbe.healbe_example_andorid.pojo.tools.AlertLoader;
 import com.healbe.healbe_example_andorid.pojo.tools.AuthenticateResponse;
 import com.healbe.healbe_example_andorid.pojo.tools.ExtendStateData;
 import com.healbe.healbe_example_andorid.pojo.tools.HealthPack;
@@ -47,6 +48,7 @@ public class GeneralActivity extends AppCompatActivity {
 
     private AuthenticateResponse user;
     private TextView userName;
+    private TextView textInfo;
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -55,6 +57,7 @@ public class GeneralActivity extends AppCompatActivity {
     private CalendarFragment calendarFragment;
     private SyncFragment syncFragment;
 
+    private AlertLoader loader;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,11 +90,6 @@ public class GeneralActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(syncFragment, "Синхронизация");
         viewPager.setAdapter(viewPagerAdapter);
 
-
-
-
-
-        Toast.makeText(GeneralActivity.this, user.toString(), Toast.LENGTH_LONG).show();
     }
 
     public void onClickHome(View view) {
@@ -106,10 +104,11 @@ public class GeneralActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("CheckResult")
     public void onClickJSON(View view) {
+        loader = new AlertLoader(GeneralActivity.this, "Сбор данных...");
+        loader.start();
+
         hp = new HealthPack();
         exData = new ExtendStateData();
-        // userId
-
 
         Single.zip(
                 HealbeSdk.get().GOBE.get(),                                             //MAC
@@ -156,54 +155,57 @@ public class GeneralActivity extends AppCompatActivity {
             AlertDialog alertPi = builder.create();
             alertPi.show();
 
-            TextView textView = (TextView) findViewById(R.id.textViewINFO);
-            textView.setText("Новые данные cобраны " + ConverterJson.getLastTimeCreateJson());
+            textInfo = (TextView) findViewById(R.id.textViewINFO);
+            textInfo.setText("Новые данные cобраны " + ConverterJson.getLastTimeCreateJson());
 //            /*Удаляется бонусный файл*/
             ConverterJson.deleteBonus();
+
+            loader.stop(AlertLoader.END_JSON);
         });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("CheckResult")
     public void onClickSUBMIT(View view) {
-        TextView textView = (TextView) findViewById(R.id.textViewINFO);
-        if(textView.getText().toString().indexOf("отправлены") != -1) {
+        textInfo = (TextView) findViewById(R.id.textViewINFO);
+        if(textInfo.getText().toString().indexOf("отправлены") != -1) {
             Toast.makeText(GeneralActivity.this, "Новые данные не собраны", Toast.LENGTH_LONG).show();
             return;
         }
 
-        try {
-            jsonString = ConverterJson.readUsingFiles(Environment.getExternalStorageDirectory() + "/" + File.separator + "healthPack.json");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        HealBePostResponse healBePost = new HealBePostResponse(HealBePost.URL_PACK, jsonString);
-        healBePost.setToken("Bearer " + user.getJwtToken());
-        int code = healBePost.post();
+        loader = new AlertLoader(GeneralActivity.this, "Отправка данных...");
+        loader.start();
 
-        if(code == 200) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(GeneralActivity.this);
-            builder
-                    .setTitle("Отправлено:")
-                    .setMessage(healBePost.getResponseBody())
-                    .setPositiveButton("Закрыть", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
-            AlertDialog alertPi = builder.create();
-            alertPi.show();
 
-            /*Создание бонусного файла после отправки*/
-            ConverterJson.createBonus();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    jsonString = ConverterJson.readUsingFiles(Environment.getExternalStorageDirectory() + "/" + File.separator + "healthPack.json");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-            textView.setText("Данные были cобраны " + ConverterJson.getLastTimeCreateJson() + "\n и отправлены.");
-        }
-        else {
-            textView.setText(healBePost.getResponseBody());
-        }
+                HealBePostResponse healBePost = new HealBePostResponse(HealBePost.URL_PACK, jsonString);
+                healBePost.setToken("Bearer " + user.getJwtToken());
+                int code = healBePost.post();
+
+                if(code == 200) {
+                    loader.stop(AlertLoader.END_SUBMIT);
+
+                    /*Создание бонусного файла после отправки*/
+                    ConverterJson.createBonus();
+                    textInfo.setText("Данные были cобраны " + ConverterJson.getLastTimeCreateJson() + "\n и отправлены.");
+                }
+                else {
+                    loader.stop(AlertLoader.CRASH_SUBMIT);
+                    textInfo.setText(healBePost.getResponseBody());
+                }
+            }
+        });
+
+        thread.start();
     }
 
 
